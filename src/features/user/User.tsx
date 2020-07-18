@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { setUsername, selectUsername, setUnAsync } from "./userSlice";
+import { useAppDispatch } from "../../app/store";
 
 type Props = {};
 
@@ -10,24 +11,15 @@ const User = (props: Props) => {
     // const username = useSelector<string>(selectUsername);
     const username = useSelector(selectUsername);
     const dispatch = useDispatch();
+    const appDispatch = useAppDispatch();
 
     const thenSetUn = () => {
-        // console.log("COMPONENT - BEFORE DISPATCH");
-        // dispatch(thenSetUsername(`${username}_asnyc`));
-        // console.log("COMPONENT - AFTER DISPATCH");
-
-        // console.log("COMPONENT - BEFORE DISPATCH");
-        // dispatch(
-        //     sSetUn(`${username}_async`, dispatch).then(() => {
-        //         // console.log("COMPONENT - AFTER DISPATCH");
-        //     })
-        // );
-
         console.log("COMPONENT - BEFORE DISPATCH");
-        //@ts-ignore
-        dispatch(setUnAsync(`${username}_async`)).then(() =>
-            console.log("COMPONENT - AFTER DISPATCH")
-        );
+        appDispatch(setUnAsync(`${username}_async`)).then((data) => {
+            console.log("COMPONENT - AFTER DISPATCH");
+            console.log("COMPONENT - THE NAME FROM API IS + ", data);
+        });
+        console.log("COMPONENT - AFTER THEN");
     };
 
     return (

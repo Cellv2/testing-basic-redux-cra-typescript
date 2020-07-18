@@ -1,4 +1,5 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import { useDispatch } from "react-redux";
 
 import counterReducer from "../features/counter/counterSlice";
 import userReducer from "../features/user/userSlice";
@@ -25,3 +26,6 @@ export type AppThunkPromise<ReturnType = Promise<any>> = ThunkAction<
     unknown,
     Action<string>
 >;
+
+export type AppDispatch = typeof store.dispatch;
+export const useAppDispatch = () => useDispatch<AppDispatch>(); // Export a hook that can be reused to resolve types

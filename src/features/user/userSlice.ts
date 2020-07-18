@@ -31,15 +31,15 @@ export const setUnAsync = (name: string): AppThunkPromise => async (
     dispatch,
     getState
 ) => {
-    // const example = fetch("https://jsonplaceholder.typicode.com/todos/1")
-    //     .then((response) => response.json())
-    //     .then((json) => console.log(json));
-
     console.log("SLICE - BEFORE DISPATCH");
-    const todos = await fetch("https://jsonplaceholder.typicode.com/users/1");
+    // https://jsonplaceholder.typicode.com/users/1
+    const user = await fetch("https://jsonplaceholder.typicode.com/users/1");
+    const userInfo = await user.json();
+    const username = userInfo.username;
+    dispatch(setUsername(`${username}_async`));
     console.log("SLICE - AFTER DISPATCH");
 
-    return todos;
+    return username;
 };
 
 export const selectUsername = (state: RootState) => state.user.username;

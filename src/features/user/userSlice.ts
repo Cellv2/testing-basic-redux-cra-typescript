@@ -36,7 +36,7 @@ export const setUnAsync = (name: string): AppThunkPromise => async (
     const user = await fetch("https://jsonplaceholder.typicode.com/users/1");
     const userInfo = await user.json();
     const username = userInfo.username;
-    dispatch(setUsername(`${username}_async`));
+    dispatch(setUsername(`${name}_async`));
     console.log("SLICE - AFTER DISPATCH");
 
     return username;

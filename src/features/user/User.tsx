@@ -17,7 +17,7 @@ const User = (props: Props) => {
         console.log("COMPONENT - BEFORE DISPATCH");
         appDispatch(setUnAsync(`${username}_async`)).then((data) => {
             console.log("COMPONENT - AFTER DISPATCH");
-            console.log("COMPONENT - THE NAME FROM API IS + ", data);
+            console.log("COMPONENT - THE NAME FROM API IS: ", data);
         });
         console.log("COMPONENT - AFTER THEN");
     };
